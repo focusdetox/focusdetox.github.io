@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — FocusDetox</title>
+  <meta name="description" content="FocusDetox pricing — only pay when you break a pact you set yourself. Minimum fine of $1. No subscriptions, no hidden fees." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0d0f; --bg2: #111518; --card: #161c20; --card2: #1d2428;
+      --border: #252d33; --green: #5de8a0; --amber: #f5c842;
+      --text: #e8edf2; --muted: #7a8a96; --soft: #b0bec8;
+      --radius: 20px; --radius-sm: 12px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10,13,15,0.85); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--green); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { background: var(--green); color: #0a0d0f; border: none; padding: 10px 24px; border-radius: 100px; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; text-decoration: none; }
+
+    .page-hero {
+      padding: 160px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(93,232,160,0.10) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .section-label { display: inline-block; font-size: 0.75rem; font-weight: 600; color: var(--green); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; }
+    h1 em { font-style: italic; color: var(--green); }
+    .hero-sub { font-size: 1.1rem; color: var(--soft); max-width: 540px; margin: 0 auto 64px; font-weight: 300; line-height: 1.7; }
+
+    .container { max-width: 1000px; margin: 0 auto; }
+    section { padding: 80px 24px; }
+
+    /* PRICING MODEL */
+    .model-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .model-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .model-card:hover { border-color: rgba(93,232,160,0.3); transform: translateY(-4px); }
+
+    .model-icon { font-size: 2.5rem; margin-bottom: 16px; }
+    .model-card h3 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 8px; }
+    .model-card p { color: var(--soft); font-size: 0.85rem; line-height: 1.65; }
+
+    .model-highlight { border-color: rgba(93,232,160,0.25); background: rgba(93,232,160,0.04); }
+
+    /* FINE CALCULATOR */
+    .calc-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .calc-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    h2 { font-family: 'Instrument Serif', serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; }
+    h2 em { font-style: italic; color: var(--green); }
+
+    .calc-desc { color: var(--soft); font-size: 0.92rem; line-height: 1.7; margin-bottom: 32px; }
+
+    .calc-points { display: flex; flex-direction: column; gap: 16px; }
+
+    .calc-point {
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+
+    .cp-icon {
+      width: 32px; height: 32px;
+      background: rgba(93,232,160,0.1);
+      border: 1px solid rgba(93,232,160,0.2);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; flex-shrink: 0;
+    }
+
+    .cp-text { font-size: 0.88rem; color: var(--soft); line-height: 1.6; }
+    .cp-text strong { color: var(--text); }
+
+    /* INTERACTIVE CALCULATOR */
+    .calc-widget {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .cw-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; }
+
+    .cw-row { margin-bottom: 20px; }
+    .cw-label { font-size: 0.82rem; color: var(--soft); margin-bottom: 8px; display: flex; justify-content: space-between; }
+    .cw-label span { color: var(--green); font-family: 'Syne', sans-serif; font-weight: 700; }
+
+    input[type="range"] {
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 6px;
+      background: var(--border);
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--green);
+      cursor: pointer;
+      box-shadow: 0 0 0 4px rgba(93,232,160,0.2);
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: linear-gradient(to right, var(--green) var(--progress, 50%), var(--border) var(--progress, 50%));
+      height: 6px;
+      border-radius: 3px;
+    }
+
+    .cw-result {
+      background: rgba(93,232,160,0.06);
+      border: 1px solid rgba(93,232,160,0.2);
+      border-radius: var(--radius-sm);
+      padding: 20px;
+      margin-top: 8px;
+    }
+
+    .cwr-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .cwr-row:last-child { border-bottom: none; }
+    .cwr-label { font-size: 0.82rem; color: var(--muted); }
+    .cwr-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--text); }
+
+    .cwr-total-row { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+    .cwr-total-label { font-size: 0.88rem; color: var(--soft); }
+    .cwr-total-val { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.6rem; color: var(--amber); }
+
+    .cwr-note { font-size: 0.72rem; color: var(--muted); margin-top: 8px; text-align: center; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 48px; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--text);
+      text-align: left;
+      padding: 24px 0;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-q:hover { color: var(--green); }
+
+    .faq-chevron {
+      width: 20px; height: 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s, border-color 0.3s;
+      flex-shrink: 0;
+    }
+
+    .faq-chevron svg { transition: transform 0.3s; }
+
+    .faq-item.open .faq-chevron { border-color: var(--green); }
+    .faq-item.open .faq-chevron svg { transform: rotate(180deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.3s;
+      color: var(--soft);
+      font-size: 0.92rem;
+      line-height: 1.75;
+    }
+
+    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
+
+    /* FOOTER */
+    footer { border-top: 1px solid var(--border); padding: 48px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; }
+    .footer-brand p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; margin-top: 12px; max-width: 280px; }
+    .footer-col h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--soft); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--text); }
+    .footer-bottom { max-width: 1100px; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--muted); }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .model-grid { grid-template-columns: 1fr; }
+      .calc-wrap { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 600px) {
+      footer { padding: 40px 24px; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Focus<span>Detox</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#how">How It Works</a></li>
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="pricing.html" style="color:var(--text)">Pricing</a></li>
+  </ul>
+  <a href="index.html#download" class="nav-cta">Download App</a>
+</nav>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="section-label reveal">Pricing</div>
+    <h1 class="reveal">Pay only when<br>you <em>break your pact.</em></h1>
+    <p class="hero-sub reveal">There are no subscriptions, no monthly fees, and no hidden charges. You set the fine. You only pay if you break your own commitment.</p>
+  </div>
+</div>
+
+<!-- MODEL OVERVIEW -->
+<section>
+  <div class="container">
+    <div class="model-grid">
+      <div class="model-card reveal">
+        <div class="model-icon">🆓</div>
+        <h3>App is Free to Download</h3>
+        <p>Download FocusDetox on iOS or Android at no cost. Set up your pacts and start tracking immediately.</p>
+      </div>
+      <div class="model-card model-highlight reveal">
+        <div class="model-icon">🤝</div>
+        <h3>You Set the Fine</h3>
+        <p>Choose your own accountability amount per pact — the minimum is <strong style="color:var(--amber)">$1 USD</strong>. The more you set, the stronger the commitment.</p>
+      </div>
+      <div class="model-card reveal">
+        <div class="model-icon">✅</div>
+        <h3>Only Charged on Breach</h3>
+        <p>If you honor your pact — you pay $0. The fine is charged <em>only</em> if you exceed your self-set time limit.</p>
+      </div>
+    </div>
+
+    <!-- Explainer box -->
+    <div style="background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 40px; text-align: center;" class="reveal">
+      <div style="font-family:'Instrument Serif',serif; font-size: clamp(1.6rem,3vw,2.4rem); margin-bottom: 16px; line-height:1.2;">
+        Keep your pact → <span style="color:var(--green)">$0 charged</span><br>
+        Break your pact → <span style="color:var(--amber)">your fine amount</span>
+      </div>
+      <p style="color:var(--muted); font-size: 0.9rem; max-width: 480px; margin: 0 auto;">It's that simple. You are only ever accountable to yourself. Payments are processed securely via Paddle, our merchant of record.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINE CALCULATOR -->
+<section class="calc-section">
+  <div class="container">
+    <div class="calc-wrap">
+      <div>
+        <span class="section-label reveal">Fine Calculator</span>
+        <h2 class="reveal">What could it<br><em>actually cost?</em></h2>
+        <p class="calc-desc reveal">Your worst-case scenario is entirely in your hands. Here's how to think about it.</p>
+
+        <div class="calc-points">
+          <div class="calc-point reveal">
+            <div class="cp-icon">💸</div>
+            <div class="cp-text"><strong>Minimum fine is $1.</strong> You can set as low as $1 per pact — just enough to make it real without feeling painful.</div>
+          </div>
+          <div class="calc-point reveal">
+            <div class="cp-icon">📅</div>
+            <div class="cp-text"><strong>Fines are per-breach, per day.</strong> Each day you break a pact, that pact's fine is charged once — not repeatedly.</div>
+          </div>
+          <div class="calc-point reveal">
+            <div class="cp-icon">🔐</div>
+            <div class="cp-text"><strong>Secure via Paddle.</strong> Your card is pre-authorized when you set a pact. The charge only processes on a breach event.</div>
+          </div>
+          <div class="calc-point reveal">
+            <div class="cp-icon">⚙️</div>
+            <div class="cp-text"><strong>Pause or cancel anytime.</strong> You can pause or delete any pact from the app before it resets each day. See our <a href="refund.html" style="color:var(--green)">Refund Policy</a> for details.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-widget reveal">
+        <div class="cw-title">Estimate Your Max Daily Exposure</div>
+
+        <div class="cw-row">
+          <div class="cw-label">Number of pacts <span id="pact-count-val">3</span></div>
+          <input type="range" id="pact-count" min="1" max="10" value="3" />
+        </div>
+
+        <div class="cw-row">
+          <div class="cw-label">Average fine per pact <span id="fine-amt-val">$5</span></div>
+          <input type="range" id="fine-amt" min="1" max="50" value="5" />
+        </div>
+
+        <div class="cw-row">
+          <div class="cw-label">Days per week you might slip <span id="slip-days-val">2</span></div>
+          <input type="range" id="slip-days" min="0" max="7" value="2" />
+        </div>
+
+        <div class="cw-result" id="calc-result">
+          <div class="cwr-row"><div class="cwr-label">Daily max (if all broken)</div><div class="cwr-val" id="daily-max">$15.00</div></div>
+          <div class="cwr-row"><div class="cwr-label">Weekly estimate (your slip rate)</div><div class="cwr-val" id="weekly-est">$30.00</div></div>
+          <div class="cwr-row"><div class="cwr-label">Monthly estimate</div><div class="cwr-val" id="monthly-est">$120.00</div></div>
+          <div class="cwr-total-row">
+            <div class="cwr-total-label">If you <em>never</em> break any pact</div>
+            <div class="cwr-total-val">$0.00</div>
+          </div>
+          <div class="cwr-note">Estimates only. Actual charges depend entirely on your behavior.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <span class="section-label">Frequently Asked Questions</span>
+    <h2 style="margin-bottom: 0;">Everything about<br><em>how you're charged.</em></h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">
+          When exactly is my card charged?
+          <div class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="faq-a">Your card is only charged when you exceed the time limit on an active pact. We use Paddle to securely pre-authorize your payment method when a pact is created, but no funds are moved unless you breach your limit. You receive a notification when a breach is detected and before any charge is processed.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          What is the minimum fine I can set?
+          <div class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="faq-a">The minimum fine amount for any pact is $1.00 USD. There is no maximum — you can set fines as high as you believe necessary to motivate yourself. Keep in mind that high fines create strong incentives, and you are fully responsible for the amounts you choose to commit to.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          Can I cancel or pause a pact before it resets?
+          <div class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="faq-a">Yes. You can pause or delete any pact from within the app at any time. However, if you have already breached a pact for that day (exceeded the limit), the fine for that breach is final and will be processed. Pausing or deleting a pact after a breach does not cancel the pending charge for that breach.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          What currency are fines charged in?
+          <div class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="faq-a">All fines are set and charged in USD (United States Dollars). Your bank or card provider may apply currency conversion fees if your account is in a different currency — this is controlled by your financial institution, not by FocusDetox.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          Who processes my payment? Is it secure?
+          <div class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="faq-a">All payments are processed by Paddle.com Market Limited, our Merchant of Record. Paddle is PCI DSS compliant and handles all billing, invoicing, and receipts on our behalf. FocusDetox never stores your full card details. Paddle is a globally trusted payment infrastructure provider.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          Can I get a refund if I dispute a charge?
+          <div class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="faq-a">Because you set your own fine and agreed to the pact terms, fines charged for genuine limit breaches are non-refundable. However, if you believe a charge occurred in error (e.g., technical malfunction), please contact us at support@focusdetox.app within 7 days and we'll investigate. See our full Refund Policy for details.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">
+          Is there a subscription fee or monthly plan?
+          <div class="faq-chevron"><svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </button>
+        <div class="faq-a">No. FocusDetox has no subscription fees. The app is free to download and use. You only pay fines when you breach a pact you set yourself. We may introduce optional premium features in the future, which will always be clearly disclosed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html" class="logo">Focus<span>Detox</span></a>
+      <p>Reclaim your attention with accountability-based digital wellbeing. Make a pact, keep your focus.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Product</h4>
+      <ul>
+        <li><a href="index.html#how">How It Works</a></li>
+        <li><a href="index.html#features">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="refund.html">Refund Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Download</h4>
+      <ul>
+        <li><a href="#">App Store</a></li>
+        <li><a href="#">Google Play</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 FocusDetox. All rights reserved.</span>
+    <span>Operated by an Israeli-registered entity. Payments via Paddle.</span>
+  </div>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Calculator
+  const pactCount = document.getElementById('pact-count');
+  const fineAmt = document.getElementById('fine-amt');
+  const slipDays = document.getElementById('slip-days');
+
+  function updateCalc() {
+    const p = parseInt(pactCount.value);
+    const f = parseInt(fineAmt.value);
+    const s = parseInt(slipDays.value);
+
+    document.getElementById('pact-count-val').textContent = p;
+    document.getElementById('fine-amt-val').textContent = '$' + f;
+    document.getElementById('slip-days-val').textContent = s;
+
+    const daily = p * f;
+    const weekly = daily * s;
+    const monthly = weekly * 4.33;
+
+    document.getElementById('daily-max').textContent = '$' + daily.toFixed(2);
+    document.getElementById('weekly-est').textContent = '$' + weekly.toFixed(2);
+    document.getElementById('monthly-est').textContent = '$' + monthly.toFixed(2);
+
+    // Update slider track
+    [pactCount, fineAmt, slipDays].forEach(el => {
+      const min = parseInt(el.min);
+      const max = parseInt(el.max);
+      const val = parseInt(el.value);
+      const pct = ((val - min) / (max - min)) * 100;
+      el.style.setProperty('--progress', pct + '%');
+    });
+  }
+
+  [pactCount, fineAmt, slipDays].forEach(el => el.addEventListener('input', updateCalc));
+  updateCalc();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

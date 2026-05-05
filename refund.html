@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Refund Policy — FocusDetox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0d0f; --bg2: #111518; --card: #161c20;
+      --border: #252d33; --green: #5de8a0; --amber: #f5c842;
+      --text: #e8edf2; --muted: #7a8a96; --soft: #b0bec8;
+      --radius: 20px; --radius-sm: 12px;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 48px; background: rgba(10,13,15,0.9); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--green); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--green); }
+    .page-wrap { max-width: 780px; margin: 0 auto; padding: 140px 24px 80px; }
+    .doc-badge { display: inline-block; background: rgba(245,200,66,0.1); border: 1px solid rgba(245,200,66,0.25); color: var(--amber); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 6px 14px; border-radius: 100px; margin-bottom: 24px; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 16px; }
+    .doc-meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .doc-meta strong { color: var(--soft); }
+    .toc { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 24px 28px; margin-bottom: 48px; }
+    .toc-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 14px; }
+    .toc ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .toc a { color: var(--soft); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .toc a:hover { color: var(--green); }
+    .doc-section { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+    .doc-section:last-child { border-bottom: none; }
+    h2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.3rem; margin-bottom: 16px; color: var(--text); padding-top: 8px; }
+    h3 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem; margin: 24px 0 8px; color: var(--soft); }
+    p { color: var(--soft); font-size: 0.93rem; margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+    ul, ol { padding-left: 20px; color: var(--soft); font-size: 0.93rem; margin-bottom: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .highlight-box { background: rgba(245,200,66,0.07); border: 1px solid rgba(245,200,66,0.25); border-radius: var(--radius-sm); padding: 20px 24px; margin: 20px 0; color: var(--soft); font-size: 0.9rem; }
+    .highlight-box strong { color: var(--amber); }
+    .green-box { background: rgba(93,232,160,0.06); border: 1px solid rgba(93,232,160,0.2); border-radius: var(--radius-sm); padding: 20px 24px; margin: 20px 0; color: var(--soft); font-size: 0.9rem; }
+    .red-box { background: rgba(255,100,100,0.06); border: 1px solid rgba(255,100,100,0.2); border-radius: var(--radius-sm); padding: 20px 24px; margin: 20px 0; color: var(--soft); font-size: 0.9rem; }
+    .red-box strong { color: #ff8080; }
+    a { color: var(--green); }
+
+    /* Decision tree */
+    .flow {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin: 24px 0;
+    }
+    .flow-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+    .flow-step { display: flex; gap: 14px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .flow-step:last-child { border-bottom: none; }
+    .flow-badge { padding: 4px 10px; border-radius: 100px; font-size: 0.72rem; font-family: 'Syne', sans-serif; font-weight: 700; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+    .badge-q { background: rgba(93,232,160,0.12); color: var(--green); }
+    .badge-y { background: rgba(255,100,100,0.12); color: #ff8080; }
+    .badge-n { background: rgba(93,232,160,0.12); color: var(--green); }
+    .flow-text { font-size: 0.88rem; color: var(--soft); line-height: 1.6; }
+
+    footer { border-top: 1px solid var(--border); padding: 40px 48px; }
+    .footer-bottom { max-width: 780px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+    @media (max-width: 600px) { nav { padding: 16px 20px; } .footer-bottom { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Focus<span>Detox</span></a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="doc-badge">Legal Document</div>
+  <h1>Refund Policy</h1>
+  <div class="doc-meta">
+    <strong>Last Updated:</strong> January 1, 2025 &nbsp;·&nbsp;
+    <strong>Effective Date:</strong> January 1, 2025 &nbsp;·&nbsp;
+    <strong>Version:</strong> 1.0
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ol>
+      <li><a href="#r1">Overview</a></li>
+      <li><a href="#r2">Non-Refundable Charges (Pact Fines)</a></li>
+      <li><a href="#r3">Eligible Refund Scenarios</a></li>
+      <li><a href="#r4">How to Request a Refund</a></li>
+      <li><a href="#r5">Refund Process &amp; Timeline</a></li>
+      <li><a href="#r6">EU Consumer Cancellation Rights</a></li>
+      <li><a href="#r7">Israeli Consumer Law</a></li>
+      <li><a href="#r8">Disputes &amp; Chargebacks</a></li>
+      <li><a href="#r9">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="doc-section" id="r1">
+    <h2>1. Overview</h2>
+    <p>FocusDetox operates on a unique accountability-based model: you set your own financial commitments ("Pacts"), and a fine is charged only when you exceed a self-set limit. Because you explicitly define and agree to these terms before any charge occurs, our refund policy reflects the voluntary nature of these commitments.</p>
+    <p>This Refund Policy applies to all charges processed through our payment processor, Paddle.com Market Limited ("Paddle"). All payments are processed by Paddle as our Merchant of Record. Refund requests related to billing errors by Paddle directly should also be submitted to Paddle at <a href="https://www.paddle.com/legal/contact" target="_blank" rel="noopener">paddle.com</a>.</p>
+
+    <div class="highlight-box">
+      <strong>Key principle:</strong> Pact fines triggered by genuine limit breaches are non-refundable. Charges resulting from technical errors on our side are eligible for full refunds. We evaluate all claims in good faith.
+    </div>
+  </div>
+
+  <div class="doc-section" id="r2">
+    <h2>2. Non-Refundable Charges (Pact Fines)</h2>
+
+    <div class="red-box">
+      <strong>Pact fines are generally non-refundable.</strong> When you create a Pact, you explicitly agree to: (1) the time limit, (2) the fine amount (minimum $1 USD), and (3) the automatic charge upon breach. A confirmed breach resulting in a fine is a consequence of an agreement you entered into knowingly and voluntarily.
+    </div>
+
+    <p>The following are specifically non-refundable:</p>
+    <ul>
+      <li>Any fine charged after your pact limit was confirmed exceeded by our tracking system;</li>
+      <li>Fines where you "forgot" to pause or delete your Pact before exceeding the limit;</li>
+      <li>Fines where you disagreed with your own pact terms after the fact;</li>
+      <li>Fines resulting from your failure to cancel a Pact you no longer wanted before the daily reset;</li>
+      <li>Fines on any day where you voluntarily chose to use an app beyond your set limit.</li>
+    </ul>
+    <p>This non-refund stance is fundamental to the accountability model — weakening it would undermine the product's core value for all users.</p>
+  </div>
+
+  <div class="doc-section" id="r3">
+    <h2>3. Eligible Refund Scenarios</h2>
+    <p>We recognize that technical issues can occur. The following scenarios may qualify for a full refund:</p>
+
+    <h3>3.1 Technical Malfunction (Our Side)</h3>
+    <p>If a fine was charged due to a documented technical error in our breach detection system — for example, a system bug that incorrectly reported usage exceeding a limit when it did not — you may be eligible for a full refund of that charge. We will investigate using our server-side logs.</p>
+
+    <h3>3.2 Duplicate Charges</h3>
+    <p>If your payment method was charged more than once for a single breach event due to a payment processing error, the duplicate charge(s) will be refunded in full.</p>
+
+    <h3>3.3 Unauthorized Account Access</h3>
+    <p>If you can demonstrate that a Pact was created and a fine was charged as a result of unauthorized access to your account (not by you or anyone you permitted to use your account), we will review the claim and may issue a refund. You must report this within 7 days of the charge and provide supporting information.</p>
+
+    <h3>3.4 Service Outage During Pact Period</h3>
+    <p>If FocusDetox experienced a service outage that materially prevented you from accessing the app to pause or delete a Pact, and a fine was triggered during that outage period, we will evaluate the claim on a case-by-case basis.</p>
+
+    <h3>What Is NOT Eligible</h3>
+    <div class="flow">
+      <div class="flow-title">Eligibility Quick Reference</div>
+      <div class="flow-step">
+        <div class="flow-badge badge-y">NOT ELIGIBLE</div>
+        <div class="flow-text">You genuinely exceeded your app usage limit and were correctly charged</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge badge-y">NOT ELIGIBLE</div>
+        <div class="flow-text">You forgot to cancel or pause a Pact before the daily reset</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge badge-y">NOT ELIGIBLE</div>
+        <div class="flow-text">You changed your mind about the fine amount after a breach</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge badge-n">MAY BE ELIGIBLE</div>
+        <div class="flow-text">Our system incorrectly detected a breach that did not occur</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge badge-n">MAY BE ELIGIBLE</div>
+        <div class="flow-text">You were charged twice for the same breach event</div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-badge badge-n">MAY BE ELIGIBLE</div>
+        <div class="flow-text">Unauthorized access to your account resulted in the charge</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-section" id="r4">
+    <h2>4. How to Request a Refund</h2>
+    <p>To submit a refund request, contact us within <strong>7 calendar days</strong> of the disputed charge at:</p>
+    <div class="green-box">
+      <strong style="color:var(--green)">Email:</strong> <a href="mailto:support@focusdetox.app">support@focusdetox.app</a><br>
+      <strong>Subject line:</strong> Refund Request — [your registered email] — [date of charge]
+    </div>
+    <p>Your request must include:</p>
+    <ul>
+      <li>Your registered account email address;</li>
+      <li>The date and amount of the charge you are disputing;</li>
+      <li>The name of the Pact and app involved;</li>
+      <li>A clear explanation of why you believe the charge was in error;</li>
+      <li>Any relevant screenshots or evidence (e.g., device screen time data showing usage was within the limit).</li>
+    </ul>
+    <p>Requests submitted after 7 days of the charge date will generally not be accepted, except in cases where the issue could not reasonably have been discovered within that window.</p>
+  </div>
+
+  <div class="doc-section" id="r5">
+    <h2>5. Refund Process &amp; Timeline</h2>
+    <p>Upon receipt of your refund request, we will:</p>
+    <ul>
+      <li><strong>Acknowledge</strong> your request within 2 business days;</li>
+      <li><strong>Investigate</strong> using our server-side logs, breach detection records, and payment records — typically within 5–10 business days;</li>
+      <li><strong>Notify you</strong> of our decision via email with a clear explanation;</li>
+      <li><strong>Process approved refunds</strong> through Paddle within 5–10 business days of approval. Refunds are returned to the original payment method.</li>
+    </ul>
+    <p>The total timeline from request to refund credit is typically 7–21 days depending on your bank or card issuer's processing time. We have no control over your financial institution's processing speed once a refund is initiated.</p>
+  </div>
+
+  <div class="doc-section" id="r6">
+    <h2>6. EU Consumer Cancellation Rights</h2>
+    <p>For users in the European Union, under the EU Consumer Rights Directive (2011/83/EU), consumers generally have a 14-day "right of withdrawal" for digital services purchased online. However, this right does not apply where:</p>
+    <ul>
+      <li>The digital content or service has already been delivered with the consumer's prior consent and acknowledgment that the right of withdrawal is thereby waived; or</li>
+      <li>The service has been fully performed.</li>
+    </ul>
+    <p>When you create a Pact and authorize a fine, you consent to the immediate performance of the service (real-time breach monitoring) and acknowledge that the withdrawal right does not apply to fines charged for confirmed breaches. This acknowledgment is obtained during the Pact creation flow within the app.</p>
+    <p>If you believe this does not apply to your specific situation, please contact us and we will consider your case in accordance with applicable EU consumer law.</p>
+  </div>
+
+  <div class="doc-section" id="r7">
+    <h2>7. Israeli Consumer Law</h2>
+    <p>For users in Israel, under the Israeli Consumer Protection Law, 5741-1981 and its related regulations:</p>
+    <ul>
+      <li>The Service's core offering — real-time accountability enforcement — is a digital service consumed immediately upon pact breach detection, and as such, the statutory cancellation right does not apply to individual fine charges once processed;</li>
+      <li>We are committed to fair dealing and will honor refund requests for charges that result from technical errors, as described in Section 3 above;</li>
+      <li>Nothing in this Policy overrides your mandatory rights as an Israeli consumer under applicable law.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section" id="r8">
+    <h2>8. Disputes &amp; Chargebacks</h2>
+    <p>We strongly encourage you to contact us directly before initiating a chargeback with your bank or card issuer. Most issues can be resolved faster through our support process than through a formal dispute.</p>
+    <p>If you initiate a chargeback for a fine that was correctly charged for a genuine pact breach, we reserve the right to:</p>
+    <ul>
+      <li>Provide evidence of the breach to your bank to contest the chargeback;</li>
+      <li>Suspend your account pending resolution of the dispute;</li>
+      <li>Terminate your account if a chargeback is found to be fraudulent or made in bad faith.</li>
+    </ul>
+    <p>Chargebacks for legitimate technical errors that we failed to resolve after a good-faith request are entirely reasonable and we will not contest them.</p>
+  </div>
+
+  <div class="doc-section" id="r9">
+    <h2>9. Contact</h2>
+    <p>For any questions about this Refund Policy or to submit a refund request:</p>
+    <div class="green-box">
+      <strong style="color:var(--green)">FocusDetox Support</strong><br>
+      Email: <a href="mailto:support@focusdetox.app">support@focusdetox.app</a><br>
+      Website: <a href="https://focusdetox.github.io">focusdetox.github.io</a><br><br>
+      For payment-related enquiries handled by Paddle:<br>
+      <a href="https://www.paddle.com/legal/contact" target="_blank" rel="noopener">paddle.com/legal/contact</a>
+    </div>
+    <p>We aim to respond to all refund-related inquiries within 2 business days.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <span>© 2025 FocusDetox. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="index.html">Home</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — FocusDetox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a0d0f; --bg2: #111518; --card: #161c20;
+      --border: #252d33; --green: #5de8a0; --amber: #f5c842;
+      --text: #e8edf2; --muted: #7a8a96; --soft: #b0bec8;
+      --radius: 20px; --radius-sm: 12px;
+    }
+    body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10,13,15,0.9); backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--text); text-decoration: none; }
+    .logo span { color: var(--green); }
+    .nav-back { color: var(--muted); text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+    .nav-back:hover { color: var(--green); }
+
+    .page-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 140px 24px 80px;
+    }
+
+    .doc-badge {
+      display: inline-block;
+      background: rgba(93,232,160,0.1);
+      border: 1px solid rgba(93,232,160,0.25);
+      color: var(--green);
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .doc-meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-meta strong { color: var(--soft); }
+
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 24px 28px;
+      margin-bottom: 48px;
+    }
+
+    .toc-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 14px; }
+    .toc ol { padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+    .toc a { color: var(--soft); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .toc a:hover { color: var(--green); }
+
+    .doc-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .doc-section:last-child { border-bottom: none; }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      color: var(--text);
+      padding-top: 8px;
+    }
+
+    h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      margin: 24px 0 8px;
+      color: var(--soft);
+    }
+
+    p { color: var(--soft); font-size: 0.93rem; margin-bottom: 14px; }
+    p:last-child { margin-bottom: 0; }
+
+    ul, ol { padding-left: 20px; color: var(--soft); font-size: 0.93rem; margin-bottom: 14px; display: flex; flex-direction: column; gap: 8px; }
+
+    .highlight-box {
+      background: rgba(245,200,66,0.07);
+      border: 1px solid rgba(245,200,66,0.25);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 20px 0;
+      color: var(--soft);
+      font-size: 0.9rem;
+    }
+
+    .highlight-box strong { color: var(--amber); }
+
+    .green-box {
+      background: rgba(93,232,160,0.06);
+      border: 1px solid rgba(93,232,160,0.2);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 20px 0;
+      color: var(--soft);
+      font-size: 0.9rem;
+    }
+
+    a { color: var(--green); }
+
+    footer { border-top: 1px solid var(--border); padding: 40px 48px; }
+    .footer-bottom { max-width: 780px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--muted); flex-wrap: wrap; gap: 12px; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .footer-bottom { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">Focus<span>Detox</span></a>
+  <a href="index.html" class="nav-back">← Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="doc-badge">Legal Document</div>
+  <h1>Terms of Service</h1>
+  <div class="doc-meta">
+    <strong>Last Updated:</strong> January 1, 2025 &nbsp;·&nbsp;
+    <strong>Effective Date:</strong> January 1, 2025 &nbsp;·&nbsp;
+    <strong>Version:</strong> 1.0
+  </div>
+
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <ol>
+      <li><a href="#s1">Acceptance of Terms</a></li>
+      <li><a href="#s2">Description of Service</a></li>
+      <li><a href="#s3">Eligibility</a></li>
+      <li><a href="#s4">Account Registration</a></li>
+      <li><a href="#s5">Pact System &amp; Financial Commitments</a></li>
+      <li><a href="#s6">Billing &amp; Payments (via Paddle)</a></li>
+      <li><a href="#s7">Prohibited Conduct</a></li>
+      <li><a href="#s8">Intellectual Property</a></li>
+      <li><a href="#s9">Privacy</a></li>
+      <li><a href="#s10">Disclaimers &amp; Limitation of Liability</a></li>
+      <li><a href="#s11">Indemnification</a></li>
+      <li><a href="#s12">Governing Law &amp; Dispute Resolution</a></li>
+      <li><a href="#s13">Changes to Terms</a></li>
+      <li><a href="#s14">Termination</a></li>
+      <li><a href="#s15">Contact</a></li>
+    </ol>
+  </div>
+
+  <div class="doc-section" id="s1">
+    <h2>1. Acceptance of Terms</h2>
+    <p>Welcome to FocusDetox ("FocusDetox," "we," "us," or "our"). By downloading, installing, accessing, or using our mobile application or website (collectively, the "Service"), you ("User," "you," or "your") agree to be bound by these Terms of Service ("Terms") and our Privacy Policy, which is incorporated herein by reference.</p>
+    <p>If you do not agree to these Terms in their entirety, you must not use the Service. Your continued use of the Service constitutes acceptance of any updated Terms.</p>
+    <p>These Terms constitute a legally binding agreement between you and FocusDetox, operated by an individual or entity registered in Israel.</p>
+  </div>
+
+  <div class="doc-section" id="s2">
+    <h2>2. Description of Service</h2>
+    <p>FocusDetox is a digital wellbeing mobile application available on iOS and Android. The Service enables users to:</p>
+    <ul>
+      <li>Monitor and track screen time and application usage;</li>
+      <li>Block or restrict access to selected applications or websites;</li>
+      <li>Create "Pacts" — voluntary self-accountability commitments with user-defined daily usage time limits;</li>
+      <li>Authorize financial fines that are charged automatically when a user breaches a self-set Pact limit;</li>
+      <li>View usage history, streaks, and behavioral insights.</li>
+    </ul>
+    <p>The Service is intended as a digital wellness tool only. FocusDetox does not provide medical, psychological, or therapeutic advice and is not a substitute for professional mental health care.</p>
+  </div>
+
+  <div class="doc-section" id="s3">
+    <h2>3. Eligibility</h2>
+    <p>You must be at least <strong>18 years of age</strong> (or the legal age of majority in your jurisdiction, if higher) to use the Service and to enter into any financial commitments via the Pact system.</p>
+    <p>By using the Service, you represent and warrant that:</p>
+    <ul>
+      <li>You are at least 18 years old;</li>
+      <li>You have the legal capacity and authority to enter into these Terms;</li>
+      <li>You are not located in a jurisdiction where use of this Service or payment processing is prohibited by law;</li>
+      <li>Any information you provide to us is accurate and complete.</li>
+    </ul>
+    <p>We reserve the right to terminate accounts of users we believe to be under 18 or otherwise ineligible.</p>
+  </div>
+
+  <div class="doc-section" id="s4">
+    <h2>4. Account Registration</h2>
+    <p>To access the Pact features and financial accountability components, you must register an account through the mobile application. You agree to:</p>
+    <ul>
+      <li>Provide accurate, current, and complete registration information;</li>
+      <li>Maintain the security of your account credentials;</li>
+      <li>Notify us immediately of any unauthorized access to your account;</li>
+      <li>Accept responsibility for all activities that occur under your account.</li>
+    </ul>
+    <p>You may not create more than one account per person. Accounts are non-transferable.</p>
+  </div>
+
+  <div class="doc-section" id="s5">
+    <h2>5. Pact System &amp; Financial Commitments</h2>
+    <h3>5.1 What Is a Pact?</h3>
+    <p>A "Pact" is a voluntary self-accountability commitment you create within the app. When you set a Pact, you:</p>
+    <ul>
+      <li>Choose a specific application or website to limit;</li>
+      <li>Define a maximum daily usage duration (the "Limit");</li>
+      <li>Set a monetary fine amount (minimum USD $1.00) to be charged if you exceed the Limit on any given day (the "Fine").</li>
+    </ul>
+
+    <div class="highlight-box">
+      <strong>Important:</strong> By creating a Pact, you are entering into a binding financial commitment. You authorize FocusDetox and its payment processor (Paddle) to charge your designated payment method the Fine amount each time you breach a Pact's daily Limit.
+    </div>
+
+    <h3>5.2 Fine Triggering</h3>
+    <p>A Fine is triggered automatically and irrevocably when our systems detect that your usage of a designated application or website has exceeded the Limit set in your active Pact for that calendar day. The Fine will be charged to your payment method without requiring additional authorization at the time of the breach.</p>
+
+    <h3>5.3 Minimum Fine Amount</h3>
+    <p>The minimum Fine amount for any Pact is USD $1.00. There is no maximum. You accept full responsibility for the Fine amounts you choose to set.</p>
+
+    <h3>5.4 Daily Reset</h3>
+    <p>Pact Limits reset at midnight in your device's local time zone each calendar day. Each day is treated independently — a breach on one day does not affect the following day's fresh limit.</p>
+
+    <h3>5.5 Pact Management</h3>
+    <p>You may pause, modify, or delete a Pact at any time before a breach occurs for that day. Once a breach has been detected and a Fine has been triggered for a given day, the Fine for that day is final and non-reversible through pact management.</p>
+
+    <h3>5.6 No Guarantee of Behavior Change</h3>
+    <p>FocusDetox makes no representation that use of the Pact system will result in reduced screen time, improved wellbeing, or any specific behavioral outcome. Results vary by individual.</p>
+  </div>
+
+  <div class="doc-section" id="s6">
+    <h2>6. Billing &amp; Payments (via Paddle)</h2>
+    <h3>6.1 Merchant of Record</h3>
+    <p>All payment processing is handled by <strong>Paddle.com Market Limited</strong> ("Paddle"), our designated Merchant of Record. Paddle is responsible for billing, invoicing, and collecting payments on our behalf. When you provide payment information, you are providing it directly to Paddle subject to Paddle's own privacy policy and terms.</p>
+
+    <h3>6.2 Payment Authorization</h3>
+    <p>By creating a Pact with a Fine amount, you authorize Paddle to charge your designated payment method for that Fine amount upon each breach event. This authorization remains in effect until you delete the Pact or close your account.</p>
+
+    <h3>6.3 Currency</h3>
+    <p>All Fine amounts are denominated and charged in United States Dollars (USD). Your bank or card issuer may apply conversion rates and fees if your account currency differs.</p>
+
+    <h3>6.4 Failed Payments</h3>
+    <p>If a payment fails, we reserve the right to retry the charge, suspend Pact features until the outstanding amount is settled, or terminate your account for non-payment.</p>
+
+    <h3>6.5 Taxes</h3>
+    <p>Paddle may collect applicable taxes (including VAT, GST, or other local taxes) in accordance with the laws of your jurisdiction. Tax amounts will be displayed at the time of charge where required by law.</p>
+
+    <h3>6.6 Refunds</h3>
+    <p>All Fines charged for confirmed pact breaches are <strong>non-refundable</strong>. You acknowledged and agreed to the Fine amount before creating the Pact. For error-based refund requests, see our <a href="refund.html">Refund Policy</a>.</p>
+  </div>
+
+  <div class="doc-section" id="s7">
+    <h2>7. Prohibited Conduct</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the Service for any unlawful purpose or in violation of any local, national, or international law;</li>
+      <li>Attempt to bypass, tamper with, or circumvent any pact tracking, app blocking, or payment triggering mechanism;</li>
+      <li>Use automated means to manipulate usage data reported to our systems;</li>
+      <li>Reverse-engineer, decompile, or attempt to extract source code from the application;</li>
+      <li>Impersonate any person or entity, or misrepresent your affiliation with any person or entity;</li>
+      <li>Introduce viruses, malware, or any malicious code into the Service;</li>
+      <li>Engage in conduct that restricts or inhibits any other user from using the Service.</li>
+    </ul>
+    <p>Violation of these prohibitions may result in immediate account termination and may expose you to civil or criminal liability.</p>
+  </div>
+
+  <div class="doc-section" id="s8">
+    <h2>8. Intellectual Property</h2>
+    <p>The Service and all of its content, including but not limited to software, code, design, text, graphics, logos, and trademarks, are the exclusive property of FocusDetox or its licensors and are protected by applicable intellectual property laws.</p>
+    <p>You are granted a limited, non-exclusive, non-transferable, revocable license to use the Service for your personal, non-commercial purposes only. You may not copy, modify, distribute, sell, or create derivative works from any part of the Service without our express written permission.</p>
+  </div>
+
+  <div class="doc-section" id="s9">
+    <h2>9. Privacy</h2>
+    <p>Your use of the Service is subject to our <a href="privacy.html">Privacy Policy</a>, which describes how we collect, use, and protect your personal data. By using the Service, you consent to the data practices described in the Privacy Policy.</p>
+    <p>We comply with applicable data protection regulations, including the Israeli Privacy Protection Law, 5741-1981, the Israeli Privacy Protection Regulations (Data Security), 5777-2017, and, where applicable, the European Union General Data Protection Regulation (GDPR).</p>
+  </div>
+
+  <div class="doc-section" id="s10">
+    <h2>10. Disclaimers &amp; Limitation of Liability</h2>
+    <h3>10.1 Service Provided "As Is"</h3>
+    <p>THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF BUGS, VIRUSES, OR OTHER HARMFUL COMPONENTS.</p>
+
+    <h3>10.2 Limitation of Liability</h3>
+    <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, FOCUSDETOX AND ITS OPERATORS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICE, INCLUDING:</p>
+    <ul>
+      <li>Fines charged due to accurate pact breach detection;</li>
+      <li>Loss of data or inability to access the Service;</li>
+      <li>Any claims related to behavioral outcomes or screen time results;</li>
+      <li>Any third-party acts or omissions.</li>
+    </ul>
+    <p>In jurisdictions where limitations on implied warranties or liability are not permitted, our liability is limited to the maximum extent permitted by law. In no event shall our total aggregate liability exceed the greater of (a) $50 USD or (b) the total amount of Fines charged to your account in the 30 days preceding the claim.</p>
+
+    <h3>10.3 Technical Errors</h3>
+    <p>While we strive for accurate breach detection, you acknowledge that software may contain errors. If you believe a Fine was triggered in error due to a technical malfunction on our side, contact us within 7 days. See our Refund Policy for the process.</p>
+  </div>
+
+  <div class="doc-section" id="s11">
+    <h2>11. Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless FocusDetox and its operators, employees, affiliates, and agents from any claims, liabilities, damages, losses, and expenses (including reasonable legal fees) arising out of or related to:</p>
+    <ul>
+      <li>Your violation of these Terms;</li>
+      <li>Your use of the Service;</li>
+      <li>Your violation of any applicable law or third-party rights.</li>
+    </ul>
+  </div>
+
+  <div class="doc-section" id="s12">
+    <h2>12. Governing Law &amp; Dispute Resolution</h2>
+    <h3>12.1 Governing Law</h3>
+    <p>These Terms shall be governed by and construed in accordance with the laws of the <strong>State of Israel</strong>, without regard to its conflict of law provisions. Users located in the European Union retain any mandatory consumer protection rights afforded to them under applicable EU law.</p>
+
+    <h3>12.2 Jurisdiction</h3>
+    <p>Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the competent courts of Israel, unless applicable mandatory law in your country of residence requires otherwise.</p>
+
+    <h3>12.3 Informal Resolution</h3>
+    <p>Before filing any legal claim, we encourage you to contact us at <a href="mailto:support@focusdetox.app">support@focusdetox.app</a> to attempt to resolve the dispute informally. We will make good faith efforts to resolve disputes within 30 days of receiving notice.</p>
+
+    <h3>12.4 EU Consumer Rights</h3>
+    <p>If you are an EU consumer, you may also use the European Commission's Online Dispute Resolution (ODR) platform, available at <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+  </div>
+
+  <div class="doc-section" id="s13">
+    <h2>13. Changes to Terms</h2>
+    <p>We reserve the right to modify these Terms at any time. When we make material changes, we will:</p>
+    <ul>
+      <li>Update the "Last Updated" date at the top of this page;</li>
+      <li>Notify you via in-app notification or email (where we have your email address).</li>
+    </ul>
+    <p>Your continued use of the Service after any such changes constitutes your acceptance of the revised Terms. If you do not agree with the revised Terms, you must stop using the Service and may close your account.</p>
+  </div>
+
+  <div class="doc-section" id="s14">
+    <h2>14. Termination</h2>
+    <p>We may suspend or terminate your access to the Service at any time, with or without cause or notice, including if we reasonably believe you have violated these Terms.</p>
+    <p>You may close your account at any time through the app settings. Upon termination:</p>
+    <ul>
+      <li>All active Pacts will be deactivated;</li>
+      <li>Any outstanding Fines already triggered remain due and payable;</li>
+      <li>Your right to use the Service ends immediately.</li>
+    </ul>
+    <p>Sections relating to payment obligations, intellectual property, disclaimers, limitation of liability, indemnification, and governing law survive termination of these Terms.</p>
+  </div>
+
+  <div class="doc-section" id="s15">
+    <h2>15. Contact</h2>
+    <p>If you have any questions about these Terms, please contact us:</p>
+    <div class="green-box">
+      <strong style="color:var(--green)">FocusDetox Support</strong><br>
+      Email: <a href="mailto:support@focusdetox.app">support@focusdetox.app</a><br>
+      Website: <a href="https://focusdetox.github.io">focusdetox.github.io</a>
+    </div>
+    <p>We are operated by an individual entity registered in Israel. For payment-related inquiries handled by our Merchant of Record, contact Paddle directly at <a href="https://www.paddle.com/legal/contact" target="_blank" rel="noopener">paddle.com</a>.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-bottom">
+    <span>© 2025 FocusDetox. All rights reserved.</span>
+    <div class="footer-links">
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refund.html">Refund Policy</a>
+      <a href="index.html">Home</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
