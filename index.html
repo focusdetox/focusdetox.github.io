@@ -8,651 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #0a0d0f;
-      --bg2: #111518;
-      --card: #161c20;
-      --card2: #1d2428;
-      --border: #252d33;
-      --green: #5de8a0;
-      --green-dim: #2a5c42;
-      --amber: #f5c842;
-      --amber-dim: #5c4a10;
-      --text: #e8edf2;
-      --muted: #7a8a96;
-      --soft: #b0bec8;
-      --radius: 20px;
-      --radius-sm: 12px;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 48px;
-      background: rgba(10,13,15,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: var(--text);
-      text-decoration: none;
-      letter-spacing: -0.02em;
-    }
-
-    .logo span { color: var(--green); }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-cta {
-      background: var(--green);
-      color: #0a0d0f;
-      border: none;
-      padding: 10px 24px;
-      border-radius: 100px;
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.9rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 140px 24px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px; left: 50%;
-      transform: translateX(-50%);
-      width: 900px; height: 900px;
-      background: radial-gradient(ellipse, rgba(93,232,160,0.12) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(93,232,160,0.1);
-      border: 1px solid rgba(93,232,160,0.25);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 0.8rem;
-      color: var(--green);
-      font-weight: 500;
-      margin-bottom: 32px;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-    }
-
-    .hero-badge::before { content: '●'; font-size: 0.6rem; animation: pulse 2s ease-in-out infinite; }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    h1 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(3.2rem, 8vw, 7rem);
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      max-width: 900px;
-      margin-bottom: 24px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--soft);
-      max-width: 560px;
-      margin-bottom: 48px;
-      font-weight: 300;
-      line-height: 1.7;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 72px;
-    }
-
-    .store-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 14px 24px;
-      color: var(--text);
-      text-decoration: none;
-      transition: border-color 0.2s, background 0.2s, transform 0.2s;
-      min-width: 190px;
-    }
-
-    .store-btn:hover {
-      border-color: var(--green);
-      background: rgba(93,232,160,0.06);
-      transform: translateY(-2px);
-    }
-
-    .store-btn svg { flex-shrink: 0; }
-
-    .store-btn-text { text-align: left; }
-    .store-btn-label { display: block; font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
-    .store-btn-name { display: block; font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; }
-
-    /* PHONE MOCKUP */
-    .phone-wrap {
-      position: relative;
-      display: inline-block;
-    }
-
-    .phone-frame {
-      width: 280px;
-      height: 560px;
-      background: var(--card);
-      border-radius: 40px;
-      border: 2px solid var(--border);
-      overflow: hidden;
-      position: relative;
-      box-shadow: 0 60px 120px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
-    }
-
-    .phone-screen {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(160deg, #0f1a14 0%, #0a0d0f 100%);
-      padding: 48px 20px 24px;
-      gap: 16px;
-    }
-
-    .phone-header {
-      text-align: center;
-    }
-
-    .phone-header-title {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.75rem;
-      color: var(--green);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .pact-card {
-      background: rgba(93,232,160,0.08);
-      border: 1px solid rgba(93,232,160,0.2);
-      border-radius: 14px;
-      padding: 14px;
-    }
-
-    .pact-card-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .pact-card-app { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.95rem; margin: 4px 0 8px; }
-
-    .pact-bar-bg {
-      height: 6px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 3px;
-      overflow: hidden;
-    }
-
-    .pact-bar-fill {
-      height: 100%;
-      background: var(--green);
-      border-radius: 3px;
-      width: 62%;
-      animation: barload 2s ease-out;
-    }
-
-    @keyframes barload { from { width: 0; } }
-
-    .pact-meta { display: flex; justify-content: space-between; margin-top: 6px; font-size: 0.62rem; color: var(--muted); }
-
-    .fine-card {
-      background: rgba(245,200,66,0.08);
-      border: 1px solid rgba(245,200,66,0.2);
-      border-radius: 14px;
-      padding: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .fine-left { }
-    .fine-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
-    .fine-amount { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--amber); }
-
-    .fine-shield { font-size: 2rem; }
-
-    .pact-list { display: flex; flex-direction: column; gap: 8px; flex: 1; }
-
-    .pact-item {
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 0.72rem;
-    }
-
-    .pact-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-    .pact-dot.green { background: var(--green); }
-    .pact-dot.amber { background: var(--amber); }
-    .pact-dot.red { background: #ff6b6b; }
-
-    .pact-item-name { font-weight: 500; flex: 1; }
-    .pact-item-time { color: var(--muted); }
-
-    /* SECTION SHARED */
-    section { padding: 100px 24px; }
-
-    .container { max-width: 1100px; margin: 0 auto; }
-
-    .section-label {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 16px;
-    }
-
-    h2 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(2.4rem, 5vw, 4rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin-bottom: 20px;
-    }
-
-    h2 em { font-style: italic; color: var(--green); }
-
-    .section-sub {
-      color: var(--soft);
-      font-size: 1.05rem;
-      max-width: 560px;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* HOW IT WORKS */
-    .how-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 64px;
-    }
-
-    .steps { display: flex; flex-direction: column; gap: 0; }
-
-    .step {
-      display: flex;
-      gap: 24px;
-      padding: 28px 0;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-    }
-
-    .step:last-child { border-bottom: none; }
-
-    .step-num {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 2.5rem;
-      color: var(--border);
-      line-height: 1;
-      min-width: 52px;
-      transition: color 0.3s;
-    }
-
-    .step:hover .step-num { color: var(--green); }
-
-    .step-text h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      margin-bottom: 8px;
-    }
-
-    .step-text p { color: var(--soft); font-size: 0.92rem; line-height: 1.7; }
-
-    .how-visual {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .visual-pact-big {
-      background: linear-gradient(135deg, rgba(93,232,160,0.12), rgba(93,232,160,0.04));
-      border: 1px solid rgba(93,232,160,0.2);
-      border-radius: var(--radius-sm);
-      padding: 24px;
-    }
-
-    .vpb-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-    .vpb-app { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; }
-    .vpb-status { font-size: 0.75rem; background: rgba(93,232,160,0.15); color: var(--green); padding: 4px 10px; border-radius: 100px; }
-
-    .vpb-timer { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 2.5rem; color: var(--green); margin-bottom: 12px; }
-
-    .vpb-progress { height: 8px; background: rgba(255,255,255,0.08); border-radius: 4px; overflow: hidden; }
-    .vpb-progress-fill { height: 100%; background: linear-gradient(90deg, var(--green), #7effc0); border-radius: 4px; width: 38%; }
-
-    .vpb-footer { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.78rem; color: var(--muted); }
-
-    .pact-pledge {
-      background: var(--card2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      padding: 18px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .pledge-icon { font-size: 1.8rem; }
-    .pledge-text { flex: 1; }
-    .pledge-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
-    .pledge-desc { font-size: 0.78rem; color: var(--muted); }
-    .pledge-amount { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--amber); }
-
-    /* FEATURES GRID */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 56px;
-    }
-
-    .feat-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      transition: border-color 0.25s, transform 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feat-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at top left, rgba(93,232,160,0.07) 0%, transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .feat-card:hover { border-color: rgba(93,232,160,0.35); transform: translateY(-4px); }
-    .feat-card:hover::before { opacity: 1; }
-
-    .feat-card.wide { grid-column: span 2; }
-    .feat-card.amber-tint { background: rgba(245,200,66,0.04); }
-    .feat-card.amber-tint::before { background: radial-gradient(ellipse at top left, rgba(245,200,66,0.08) 0%, transparent 60%); }
-    .feat-card.amber-tint:hover { border-color: rgba(245,200,66,0.35); }
-
-    .feat-icon { font-size: 2rem; margin-bottom: 20px; }
-    .feat-card h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.15rem;
-      margin-bottom: 10px;
-    }
-
-    .feat-card p { color: var(--soft); font-size: 0.88rem; line-height: 1.7; }
-
-    .feat-stat {
-      font-family: 'Instrument Serif', serif;
-      font-size: 3.5rem;
-      color: var(--green);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-
-    .feat-stat-amber { color: var(--amber); }
-
-    /* PACT SECTION */
-    .pact-section {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pact-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-
-    .pact-explainer { display: flex; flex-direction: column; gap: 20px; margin-top: 40px; }
-
-    .pact-step {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .ps-icon {
-      width: 40px; height: 40px;
-      background: rgba(93,232,160,0.1);
-      border: 1px solid rgba(93,232,160,0.2);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .ps-text h4 { font-family: 'Syne', sans-serif; font-weight: 700; margin-bottom: 4px; font-size: 0.95rem; }
-    .ps-text p { color: var(--soft); font-size: 0.85rem; line-height: 1.65; }
-
-    .pact-demo {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px;
-    }
-
-    .pd-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 24px; }
-
-    .pd-app-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .pd-app-row:last-of-type { border-bottom: none; }
-
-    .pd-app-icon {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .pd-app-name { font-weight: 500; font-size: 0.88rem; flex: 1; }
-    .pd-app-limit { font-size: 0.78rem; color: var(--muted); }
-    .pd-app-fine { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--amber); }
-
-    .pd-total {
-      margin-top: 20px;
-      padding: 16px;
-      background: rgba(245,200,66,0.08);
-      border: 1px solid rgba(245,200,66,0.2);
-      border-radius: var(--radius-sm);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .pd-total-label { font-size: 0.85rem; color: var(--soft); }
-    .pd-total-amount { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--amber); }
-
-    /* CTA */
-    .cta-section {
-      text-align: center;
-      padding: 120px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      bottom: -100px; left: 50%;
-      transform: translateX(-50%);
-      width: 700px; height: 700px;
-      background: radial-gradient(ellipse, rgba(93,232,160,0.08) 0%, transparent 65%);
-      pointer-events: none;
-    }
-
-    .cta-section h2 { margin-bottom: 20px; }
-
-    .cta-section .section-sub { margin: 0 auto 48px; }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 48px;
-    }
-
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 48px;
-    }
-
-    .footer-brand p { color: var(--muted); font-size: 0.85rem; line-height: 1.7; margin-top: 12px; max-width: 280px; }
-
-    .footer-col h4 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--soft);
-      margin-bottom: 16px;
-    }
-
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-col a { color: var(--muted); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
-    .footer-col a:hover { color: var(--text); }
-
-    .footer-bottom {
-      max-width: 1100px;
-      margin: 32px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    /* SCROLL REVEAL */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
-      .nav-links { display: none; }
-      .how-wrap { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-      .feat-card.wide { grid-column: span 1; }
-      .pact-inner { grid-template-columns: 1fr; gap: 40px; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 32px; }
-    }
-
-    @media (max-width: 600px) {
-      footer { padding: 40px 24px; }
-      .footer-inner { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="index.css" />
 </head>
 <body>
 
@@ -777,7 +133,7 @@
             <div class="vpb-status">Active Pact</div>
           </div>
           <div class="vpb-timer">23:14</div>
-          <div style="font-size:0.75rem; color: var(--muted); margin-bottom: 8px;">remaining today</div>
+          <div class="vpb-remaining">remaining today</div>
           <div class="vpb-progress"><div class="vpb-progress-fill"></div></div>
           <div class="vpb-footer"><span>38 min used</span><span>60 min limit</span></div>
         </div>
@@ -789,13 +145,13 @@
           </div>
           <div class="pledge-amount">$5.00</div>
         </div>
-        <div class="pact-pledge" style="background: rgba(93,232,160,0.05); border-color: rgba(93,232,160,0.15);">
+        <div class="pact-pledge success">
           <div class="pledge-icon">✅</div>
           <div class="pledge-text">
             <div class="pledge-title">Stay within limit</div>
             <div class="pledge-desc">Zero charge. Promise kept.</div>
           </div>
-          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.1rem; color:var(--green);">$0.00</div>
+          <div class="pledge-amount success">$0.00</div>
         </div>
       </div>
     </div>
@@ -803,7 +159,7 @@
 </section>
 
 <!-- FEATURES -->
-<section id="features" style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section id="features" class="features-section">
   <div class="container">
     <span class="section-label reveal">Features</span>
     <h2 class="reveal">Everything you need to<br><em>actually change.</em></h2>
@@ -813,8 +169,8 @@
         <div class="feat-icon">🎯</div>
         <h3>Pact-Based Accountability</h3>
         <p>Set your own financial stakes. Only charged when <em>you</em> break your own promise. The minimum is $1 — enough to matter, not enough to hurt.</p>
-        <div class="feat-stat" style="margin-top: 24px;">$1<span style="font-size:1.5rem;">+</span></div>
-        <div style="font-size: 0.82rem; color: var(--muted);">minimum fine you can set</div>
+        <div class="feat-stat">$1<span class="feat-stat-suffix">+</span></div>
+        <div class="feat-stat-caption">minimum fine you can set</div>
       </div>
 
       <div class="feat-card reveal">
@@ -833,8 +189,8 @@
         <div class="feat-icon">🛡️</div>
         <h3>Fair & Transparent Fines</h3>
         <p>Fines are only triggered when you exceed your limit — never hidden fees, never surprises.</p>
-        <div class="feat-stat feat-stat-amber" style="margin-top: 24px;">100%</div>
-        <div style="font-size: 0.82rem; color: var(--muted);">transparent billing</div>
+        <div class="feat-stat feat-stat-amber">100%</div>
+        <div class="feat-stat-caption">transparent billing</div>
       </div>
 
       <div class="feat-card reveal">
@@ -889,31 +245,31 @@
       <div class="pact-demo reveal">
         <div class="pd-title">Example Pact Setup</div>
         <div class="pd-app-row">
-          <div class="pd-app-icon" style="background:rgba(255,100,100,0.15);">🎵</div>
+          <div class="pd-app-icon tt">🎵</div>
           <div class="pd-app-name">TikTok</div>
           <div class="pd-app-limit">30 min/day</div>
           <div class="pd-app-fine">$5</div>
         </div>
         <div class="pd-app-row">
-          <div class="pd-app-icon" style="background:rgba(100,150,255,0.15);">📘</div>
+          <div class="pd-app-icon fb">📘</div>
           <div class="pd-app-name">Facebook</div>
           <div class="pd-app-limit">20 min/day</div>
           <div class="pd-app-fine">$3</div>
         </div>
         <div class="pd-app-row">
-          <div class="pd-app-icon" style="background:rgba(255,180,50,0.15);">📸</div>
+          <div class="pd-app-icon ig">📸</div>
           <div class="pd-app-name">Instagram</div>
           <div class="pd-app-limit">45 min/day</div>
           <div class="pd-app-fine">$2</div>
         </div>
         <div class="pd-app-row">
-          <div class="pd-app-icon" style="background:rgba(50,200,100,0.15);">🐦</div>
+          <div class="pd-app-icon tw">🐦</div>
           <div class="pd-app-name">Twitter / X</div>
           <div class="pd-app-limit">15 min/day</div>
           <div class="pd-app-fine">$4</div>
         </div>
         <div class="pd-total">
-          <div class="pd-total-label">Max possible daily fine<br><span style="font-size:0.72rem; color:var(--muted);">Only if all pacts broken</span></div>
+          <div class="pd-total-label">Max possible daily fine<br><small>Only if all pacts broken</small></div>
           <div class="pd-total-amount">$14.00</div>
         </div>
       </div>
@@ -982,18 +338,6 @@
   </div>
 </footer>
 
-<script>
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 60);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
-</script>
+<script src="index.js"></script>
 </body>
 </html>
