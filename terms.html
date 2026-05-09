@@ -21,7 +21,7 @@
   <div class="doc-badge">Legal Document</div>
   <h1>Terms of Service</h1>
   <div class="doc-meta">
-    <strong>Last Updated:</strong> May 5, 2026
+    <strong>Last Updated:</strong> May 9, 2026
   </div>
 
   <div class="toc">
@@ -31,7 +31,7 @@
       <li><a href="#s2">Description of Service</a></li>
       <li><a href="#s3">Eligibility</a></li>
       <li><a href="#s4">Account Registration</a></li>
-      <li><a href="#s5">Pact System &amp; Financial Commitments</a></li>
+      <li><a href="#s5">Detox System &amp; Financial Commitments</a></li>
       <li><a href="#s6">Billing &amp; Payments (via Paddle)</a></li>
       <li><a href="#s7">Prohibited Conduct</a></li>
       <li><a href="#s8">Intellectual Property</a></li>
@@ -56,18 +56,18 @@
     <h2>2. Description of Service</h2>
     <p>FocusDetox is a digital wellbeing mobile application available on iOS and Android. The Service enables users to:</p>
     <ul>
-      <li>Monitor and track screen time and application usage;</li>
-      <li>Block or restrict access to selected applications or websites;</li>
-      <li>Create "Pacts" — voluntary self-accountability commitments with user-defined daily usage time limits;</li>
-      <li>Authorize financial fines that are charged automatically when a user breaches a self-set Pact limit;</li>
-      <li>View usage history, streaks, and behavioral insights.</li>
+      <li>Select applications they wish to block on their device;</li>
+      <li>Create "Detoxes" — voluntary, time-bounded focus sessions during which the selected applications are blocked on the user's device;</li>
+      <li>Choose a "lock level" (Flex, Firm, or Unbreakable) that governs how a Detox can be ended;</li>
+      <li>Optionally attach a self-set monetary fine that is charged only if the user deliberately breaks a Firm Detox before it ends;</li>
+      <li>Schedule recurring Detoxes (e.g., Sleep, Family, custom recurring rules).</li>
     </ul>
     <p>The Service is intended as a digital wellness tool only. FocusDetox does not provide medical, psychological, or therapeutic advice and is not a substitute for professional mental health care.</p>
   </div>
 
   <div class="doc-section" id="s3">
     <h2>3. Eligibility</h2>
-    <p>You must be at least <strong>18 years of age</strong> (or the legal age of majority in your jurisdiction, if higher) to use the Service and to enter into any financial commitments via the Pact system.</p>
+    <p>You must be at least <strong>18 years of age</strong> (or the legal age of majority in your jurisdiction, if higher) to use the Service and to enter into any financial commitments via the Detox system.</p>
     <p>By using the Service, you represent and warrant that:</p>
     <ul>
       <li>You are at least 18 years old;</li>
@@ -80,7 +80,7 @@
 
   <div class="doc-section" id="s4">
     <h2>4. Account Registration</h2>
-    <p>To access the Pact features and financial accountability components, you must register an account through the mobile application. You agree to:</p>
+    <p>To access the Detox features and financial accountability components, you must register an account through the mobile application. You agree to:</p>
     <ul>
       <li>Provide accurate, current, and complete registration information;</li>
       <li>Maintain the security of your account credentials;</li>
@@ -91,33 +91,45 @@
   </div>
 
   <div class="doc-section" id="s5">
-    <h2>5. Pact System &amp; Financial Commitments</h2>
-    <h3>5.1 What Is a Pact?</h3>
-    <p>A "Pact" is a voluntary self-accountability commitment you create within the app. When you set a Pact, you:</p>
+    <h2>5. Detox System &amp; Financial Commitments</h2>
+    <h3>5.1 What Is a Detox?</h3>
+    <p>A "Detox" is a voluntary, time-bounded focus session you create within the app. When you set a Detox, you:</p>
     <ul>
-      <li>Choose a specific application or website to limit;</li>
-      <li>Define a maximum daily usage duration (the "Limit");</li>
-      <li>Set a monetary fine amount (minimum USD $1.00) to be charged if you exceed the Limit on any given day (the "Fine").</li>
+      <li>Select one or more applications to be blocked on your device for the duration of the Detox;</li>
+      <li>Define a start time and an end time (the "Detox Window") — either by starting the Detox immediately for a chosen duration, scheduling it for a future window, or creating a recurring rule;</li>
+      <li>Choose a "Lock Level" — Flex, Firm, or Unbreakable — that governs how the Detox can be ended;</li>
+      <li>Optionally set a monetary fine amount (the "Fine") in whole USD units (minimum USD $1.00 per unit), which only applies to Firm Detoxes.</li>
+    </ul>
+
+    <h3>5.2 Lock Levels</h3>
+    <p>Each Detox is created with one of three Lock Levels, which you select at creation time:</p>
+    <ul>
+      <li><strong>Flex.</strong> You may end the Detox at any time before it expires by completing an in-app friction step (e.g., a math gate). No Fine is charged. The Detox ends immediately when you choose to break it.</li>
+      <li><strong>Firm.</strong> You may end the Detox before it expires only by paying the Fine you set at creation. Until the Fine is paid via our payment processor (Paddle), the Detox remains active and the selected applications remain blocked. If you do not break the Detox, no charge is ever made.</li>
+      <li><strong>Unbreakable.</strong> The Detox cannot be ended early through the app. It will end only when its scheduled end time is reached. No Fine is associated with an Unbreakable Detox.</li>
     </ul>
 
     <div class="highlight-box">
-      <strong>Important:</strong> By creating a Pact, you are entering into a binding financial commitment. You authorize FocusDetox and its payment processor (Paddle) to charge your designated payment method the Fine amount each time you breach a Pact's daily Limit.
+      <strong>Important:</strong> When you create a Firm Detox with a Fine amount, you are entering into a binding financial commitment for that specific Detox. You authorize FocusDetox and its payment processor (Paddle) to charge your designated payment method the Fine amount if, and only if, you choose to break that Firm Detox before its scheduled end. If the Detox runs to completion, no charge is made.
     </div>
 
-    <h3>5.2 Fine Triggering</h3>
-    <p>A Fine is triggered automatically and irrevocably when our systems detect that your usage of a designated application or website has exceeded the Limit set in your active Pact for that calendar day. The Fine will be charged to your payment method without requiring additional authorization at the time of the breach.</p>
+    <h3>5.3 How a Fine Is Triggered</h3>
+    <p>A Fine is triggered solely by your own affirmative action of choosing to break an active Firm Detox while it is still running. Initiating a break opens a Paddle-hosted checkout for the Fine amount; the Detox remains active and the apps remain blocked until you successfully complete that payment. Closing or abandoning the checkout does not break the Detox and does not result in any charge. Fines are not triggered by passive measurement, by app usage, or by any time-of-day threshold.</p>
 
-    <h3>5.3 Minimum Fine Amount</h3>
-    <p>The minimum Fine amount for any Pact is USD $1.00. There is no maximum. You accept full responsibility for the Fine amounts you choose to set.</p>
+    <h3>5.4 Minimum and Pricing of the Fine</h3>
+    <p>Fines are denominated in whole USD units, with a minimum of USD $1.00 per unit. You choose the number of units when creating a Detox or in your default settings. There is no maximum. You accept full responsibility for any Fine amount you choose to set.</p>
 
-    <h3>5.4 Daily Reset</h3>
-    <p>Pact Limits reset at midnight in your device's local time zone each calendar day. Each day is treated independently — a breach on one day does not affect the following day's fresh limit.</p>
-
-    <h3>5.5 Pact Management</h3>
-    <p>You may pause, modify, or delete a Pact at any time before a breach occurs for that day. Once a breach has been detected and a Fine has been triggered for a given day, the Fine for that day is final and non-reversible through pact management.</p>
+    <h3>5.5 Detox Management</h3>
+    <p>Detox management depends on the state of the Detox:</p>
+    <ul>
+      <li><strong>Scheduled (not yet started):</strong> A Detox you have scheduled for a future time may be cancelled or deleted at any time before it becomes active. No charge can occur for a Detox that never becomes active.</li>
+      <li><strong>Active:</strong> Once a Detox is active, it cannot be cancelled or modified. A Flex Detox may be ended by completing the in-app friction step. A Firm Detox may be ended only by paying the Fine. An Unbreakable Detox cannot be ended early.</li>
+      <li><strong>Recurring rules:</strong> A recurring Detox rule (e.g., a Sleep or Family schedule) may be modified or deleted at any time; changes apply to future instances. An instance that is already active is governed by the rules above.</li>
+    </ul>
+    <p>Once a break is initiated and a Fine is paid for a Firm Detox, that payment is final and non-refundable except as described in our <a href="refund.html">Refund Policy</a>.</p>
 
     <h3>5.6 No Guarantee of Behavior Change</h3>
-    <p>FocusDetox makes no representation that use of the Pact system will result in reduced screen time, improved wellbeing, or any specific behavioral outcome. Results vary by individual.</p>
+    <p>FocusDetox makes no representation that use of the Detox system will result in reduced screen time, improved wellbeing, or any specific behavioral outcome. Results vary by individual.</p>
   </div>
 
   <div class="doc-section" id="s6">
@@ -126,19 +138,19 @@
     <p>All payment processing is handled by <strong>Paddle.com Market Limited</strong> ("Paddle"), our designated Merchant of Record. Paddle is responsible for billing, invoicing, and collecting payments on our behalf. When you provide payment information, you are providing it directly to Paddle subject to Paddle's own privacy policy and terms.</p>
 
     <h3>6.2 Payment Authorization</h3>
-    <p>By creating a Pact with a Fine amount, you authorize Paddle to charge your designated payment method for that Fine amount upon each breach event. This authorization remains in effect until you delete the Pact or close your account.</p>
+    <p>FocusDetox does not store your payment information. Each Fine is charged through a Paddle-hosted checkout that you complete at the moment you choose to break a Firm Detox. By proceeding through that checkout, you authorize Paddle to charge your selected payment method for the Fine amount displayed. No charge is made unless you complete the checkout. There is no recurring authorization, no stored card-on-file, and no automatic charging of any kind.</p>
 
     <h3>6.3 Currency</h3>
     <p>All Fine amounts are denominated and charged in United States Dollars (USD). Your bank or card issuer may apply conversion rates and fees if your account currency differs.</p>
 
-    <h3>6.4 Failed Payments</h3>
-    <p>If a payment fails, we reserve the right to retry the charge, suspend Pact features until the outstanding amount is settled, or terminate your account for non-payment.</p>
+    <h3>6.4 Failed or Abandoned Payments</h3>
+    <p>If you initiate a break on a Firm Detox and the Paddle checkout fails, is closed, or is abandoned before completion, no charge is made and the Detox remains active — the selected applications stay blocked until either the Detox runs to its scheduled end or you successfully complete a break payment.</p>
 
     <h3>6.5 Taxes</h3>
     <p>Paddle may collect applicable taxes (including VAT, GST, or other local taxes) in accordance with the laws of your jurisdiction. Tax amounts will be displayed at the time of charge where required by law.</p>
 
     <h3>6.6 Refunds</h3>
-    <p>All Fines charged for confirmed pact breaches are <strong>non-refundable</strong>. You acknowledged and agreed to the Fine amount before creating the Pact. For error-based refund requests, see our <a href="refund.html">Refund Policy</a>.</p>
+    <p>All Fines paid to break a Firm Detox are <strong>non-refundable</strong>. You acknowledged and agreed to the Fine amount when you created the Detox, and you re-confirmed it by proceeding through the Paddle checkout at the moment of breaking. For error-based refund requests (e.g., duplicate charges or technical errors on our side), see our <a href="refund.html">Refund Policy</a>.</p>
   </div>
 
   <div class="doc-section" id="s7">
@@ -146,8 +158,8 @@
     <p>You agree not to:</p>
     <ul>
       <li>Use the Service for any unlawful purpose or in violation of any local, national, or international law;</li>
-      <li>Attempt to bypass, tamper with, or circumvent any pact tracking, app blocking, or payment triggering mechanism;</li>
-      <li>Use automated means to manipulate usage data reported to our systems;</li>
+      <li>Attempt to bypass, tamper with, or circumvent any Detox enforcement, app blocking, or payment mechanism in the Service;</li>
+      <li>Use automated means to manipulate Detox state reported to our systems;</li>
       <li>Reverse-engineer, decompile, or attempt to extract source code from the application;</li>
       <li>Impersonate any person or entity, or misrepresent your affiliation with any person or entity;</li>
       <li>Introduce viruses, malware, or any malicious code into the Service;</li>
@@ -176,7 +188,7 @@
     <h3>10.2 Limitation of Liability</h3>
     <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, FOCUSDETOX AND ITS OPERATORS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICE, INCLUDING:</p>
     <ul>
-      <li>Fines charged due to accurate pact breach detection;</li>
+      <li>Fines you elected to pay in order to break a Firm Detox you created;</li>
       <li>Loss of data or inability to access the Service;</li>
       <li>Any claims related to behavioral outcomes or screen time results;</li>
       <li>Any third-party acts or omissions.</li>
@@ -184,7 +196,7 @@
     <p>In jurisdictions where limitations on implied warranties or liability are not permitted, our liability is limited to the maximum extent permitted by law. In no event shall our total aggregate liability exceed the greater of (a) $50 USD or (b) the total amount of Fines charged to your account in the 30 days preceding the claim.</p>
 
     <h3>10.3 Technical Errors</h3>
-    <p>While we strive for accurate breach detection, you acknowledge that software may contain errors. If you believe a Fine was triggered in error due to a technical malfunction on our side, contact us within 7 days. See our Refund Policy for the process.</p>
+    <p>While we strive to operate the Service correctly, you acknowledge that software may contain errors. If you believe you were charged in error due to a technical malfunction on our side (for example, a duplicate charge or a charge for a Detox break you did not initiate), contact us within 7 days. See our Refund Policy for the process.</p>
   </div>
 
   <div class="doc-section" id="s11">
@@ -227,8 +239,8 @@
     <p>We may suspend or terminate your access to the Service at any time, with or without cause or notice, including if we reasonably believe you have violated these Terms.</p>
     <p>You may close your account at any time through the app settings. Upon termination:</p>
     <ul>
-      <li>All active Pacts will be deactivated;</li>
-      <li>Any outstanding Fines already triggered remain due and payable;</li>
+      <li>All active Detoxes are ended on the server and will no longer block apps via the Service;</li>
+      <li>Any Fines already paid for past Detox breaks are not refunded by termination;</li>
       <li>Your right to use the Service ends immediately.</li>
     </ul>
     <p>Sections relating to payment obligations, intellectual property, disclaimers, limitation of liability, indemnification, and governing law survive termination of these Terms.</p>

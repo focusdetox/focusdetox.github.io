@@ -21,7 +21,7 @@
   <div class="doc-badge">Legal Document</div>
   <h1>Privacy Policy</h1>
   <div class="doc-meta">
-    <strong>Last Updated:</strong> May 5, 2026
+    <strong>Last Updated:</strong> May 9, 2026
   </div>
 
   <div class="toc">
@@ -69,9 +69,9 @@
     <table class="data-table">
       <thead><tr><th>Data Type</th><th>Examples</th><th>Purpose</th></tr></thead>
       <tbody>
-        <tr><td>Account information</td><td>Email address, username, password (hashed)</td><td>Account creation and authentication</td></tr>
-        <tr><td>Pact configuration</td><td>Selected apps, time limits, fine amounts</td><td>Operating the Pact accountability system</td></tr>
-        <tr><td>Payment information</td><td>Billing name, payment method (handled by Paddle — we do not store card numbers)</td><td>Processing fine charges</td></tr>
+        <tr><td>Google account identity</td><td>Email address, Google account ID, name (as provided by Google sign-in)</td><td>Account creation and authentication via Google OAuth — we do not collect or store passwords</td></tr>
+        <tr><td>Detox configuration</td><td>Selected apps to block, Detox start/end times, lock level, Fine amount</td><td>Operating the Detox accountability system</td></tr>
+        <tr><td>Payment information</td><td>Billing name, payment method (collected and stored by Paddle — we never see or store your card details)</td><td>Processing Fine charges when you choose to break a Firm Detox</td></tr>
         <tr><td>Support communications</td><td>Emails or messages sent to us</td><td>Customer support</td></tr>
       </tbody>
     </table>
@@ -80,23 +80,23 @@
     <table class="data-table">
       <thead><tr><th>Data Type</th><th>Examples</th><th>Purpose</th></tr></thead>
       <tbody>
-        <tr><td>Screen time &amp; usage data</td><td>Duration of app/website use, breach events, session timestamps</td><td>Core Pact functionality and analytics</td></tr>
-        <tr><td>Device information</td><td>Device type, OS version, app version, unique device identifiers</td><td>App functionality, bug detection</td></tr>
-        <tr><td>Log data</td><td>IP address, access timestamps, error logs</td><td>Security and troubleshooting</td></tr>
-        <tr><td>Usage analytics</td><td>Feature usage patterns, session length (aggregated and anonymized)</td><td>Product improvement</td></tr>
+        <tr><td>Detox state &amp; events</td><td>Detox creation, scheduled/active/completed/broken/cancelled state transitions, break events, paid Fine records</td><td>Core Detox functionality and dispute resolution</td></tr>
+        <tr><td>Device information</td><td>Device type, OS version, app version</td><td>App functionality and bug detection</td></tr>
+        <tr><td>Log data</td><td>IP address (received by our backend on API requests), access timestamps, error logs</td><td>Security, abuse prevention, and troubleshooting</td></tr>
       </tbody>
     </table>
 
     <div class="highlight-box">
-      <strong>Important note on screen time data:</strong> The screen time data we process is used solely for the purpose of evaluating pact compliance. We do not sell, share for advertising, or use your screen time data for any purpose unrelated to operating the Service.
+      <strong>Important note on what we do <em>not</em> collect from your device:</strong> Detection of which app is in the foreground (used to enforce blocking) happens entirely on your device through the operating system's Accessibility and Usage Access APIs. We do not upload your screen-time history, browsing activity, app-usage durations, foreground-app events, or the content of any application to our servers. The only Detox-related events that reach our backend are state transitions of the Detoxes you create (e.g., "active → broken") and the Fine payment record from Paddle.
     </div>
 
     <h3>3.3 Data We Do NOT Collect</h3>
     <ul>
       <li>The content of your communications, messages, or private files;</li>
-      <li>Your location (unless you voluntarily provide it for support purposes);</li>
+      <li>Your screen-time history, foreground-app events, or per-app usage durations;</li>
+      <li>Your precise location (unless you voluntarily provide it for support purposes);</li>
       <li>Biometric data;</li>
-      <li>Data from apps you have not selected for a Pact.</li>
+      <li>Data from apps you have not selected for a Detox.</li>
     </ul>
   </div>
 
@@ -104,15 +104,14 @@
     <h2>4. How We Use Your Data</h2>
     <p>We use your personal data for the following purposes:</p>
     <ul>
-      <li><strong>Service delivery:</strong> To operate, maintain, and deliver the Pact accountability system and all features of the app;</li>
-      <li><strong>Payment processing:</strong> To trigger and process fine charges via Paddle when a Pact breach is detected;</li>
-      <li><strong>Account management:</strong> To authenticate you, manage your account, and communicate with you about your account;</li>
+      <li><strong>Service delivery:</strong> To operate, maintain, and deliver the Detox accountability system and all features of the app;</li>
+      <li><strong>Payment processing:</strong> To enable Paddle-hosted checkout when you choose to break a Firm Detox, and to record the resulting payment;</li>
+      <li><strong>Account management:</strong> To authenticate you via Google OAuth, manage your account, and communicate with you about your account;</li>
       <li><strong>Customer support:</strong> To respond to inquiries, resolve disputes, and investigate refund requests;</li>
       <li><strong>Security and fraud prevention:</strong> To detect, prevent, and address technical issues, abuse, and fraudulent activity;</li>
-      <li><strong>Product improvement:</strong> To understand how users interact with the app to improve features (using aggregated, anonymized analytics);</li>
       <li><strong>Legal compliance:</strong> To comply with applicable laws, regulations, court orders, or governmental requests.</li>
     </ul>
-    <p>We do <strong>not</strong> use your data for targeted advertising, and we do not sell your personal data to any third party.</p>
+    <p>We do <strong>not</strong> use your data for targeted advertising, we do not sell your personal data to any third party, and we do not run third-party analytics SDKs in the application.</p>
   </div>
 
   <div class="doc-section" id="p5">
@@ -122,10 +121,9 @@
       <thead><tr><th>Processing Activity</th><th>Legal Basis</th></tr></thead>
       <tbody>
         <tr><td>Creating and managing your account</td><td>Performance of contract (Art. 6(1)(b) GDPR)</td></tr>
-        <tr><td>Operating the Pact system and processing fines</td><td>Performance of contract (Art. 6(1)(b) GDPR)</td></tr>
-        <tr><td>Detecting pact breaches and triggering payment</td><td>Performance of contract (Art. 6(1)(b) GDPR)</td></tr>
+        <tr><td>Operating the Detox system and processing Fine payments</td><td>Performance of contract (Art. 6(1)(b) GDPR)</td></tr>
+        <tr><td>Recording Detox state transitions and break events</td><td>Performance of contract (Art. 6(1)(b) GDPR)</td></tr>
         <tr><td>Security, fraud prevention, and error detection</td><td>Legitimate interests (Art. 6(1)(f) GDPR)</td></tr>
-        <tr><td>Product analytics (aggregated and anonymized)</td><td>Legitimate interests (Art. 6(1)(f) GDPR)</td></tr>
         <tr><td>Compliance with legal obligations</td><td>Legal obligation (Art. 6(1)(c) GDPR)</td></tr>
         <tr><td>Marketing communications (if you opt in)</td><td>Consent (Art. 6(1)(a) GDPR)</td></tr>
       </tbody>
@@ -134,25 +132,31 @@
 
   <div class="doc-section" id="p6">
     <h2>6. Data Sharing &amp; Third Parties</h2>
-    <p>We do not sell your personal data. We may share data with the following categories of third parties, strictly as necessary:</p>
+    <p>We do not sell your personal data. We share data only with the following categories of service providers, strictly as necessary to operate the Service:</p>
 
-    <h3>6.1 Paddle (Payment Processor)</h3>
-    <p>Paddle.com Market Limited processes all payments on our behalf as our Merchant of Record. When you set up a Pact with a fine amount, your payment information is processed directly by Paddle. Paddle's privacy practices are governed by their own Privacy Policy at <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">paddle.com/legal/privacy</a>.</p>
+    <h3>6.1 Google (Authentication)</h3>
+    <p>Sign-in is provided through Google OAuth. When you authenticate, Google shares your account email, Google account ID, and (if available) name with us so we can create and identify your FocusDetox account. We do not receive your Google password. Google's handling of your Google account data is governed by Google's Privacy Policy at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
 
-    <h3>6.2 Cloud Infrastructure &amp; Hosting</h3>
-    <p>We use cloud hosting providers (such as Firebase, AWS, or similar) to store and process data. These providers operate under strict data processing agreements and are not permitted to use your data for their own purposes.</p>
+    <h3>6.2 Paddle (Payment Processor &amp; Merchant of Record)</h3>
+    <p>Paddle.com Market Limited processes all Fine payments on our behalf as our Merchant of Record. When you choose to break a Firm Detox, you are redirected to a Paddle-hosted checkout page; your payment information is collected and stored by Paddle, not by FocusDetox. Paddle's privacy practices are governed by their own Privacy Policy at <a href="https://www.paddle.com/legal/privacy" target="_blank" rel="noopener">paddle.com/legal/privacy</a>.</p>
 
-    <h3>6.3 Analytics</h3>
-    <p>We may use anonymized, aggregated analytics services. No personally identifiable data is shared with analytics providers for advertising purposes.</p>
+    <h3>6.3 Convex (Backend &amp; Hosting)</h3>
+    <p>The application's backend (database, API, scheduled jobs, authentication state) is provided by Convex, operated by Convex, Inc. Convex hosts the data described in Section 3 on infrastructure located primarily in the United States (Convex's underlying infrastructure provider is Amazon Web Services). Convex acts as a data processor on our behalf and is bound by its own data processing terms; it is not permitted to use your data for its own purposes. Convex's privacy practices are described at <a href="https://www.convex.dev/legal/privacy" target="_blank" rel="noopener">convex.dev/legal/privacy</a>.</p>
 
-    <h3>6.4 Legal Requirements</h3>
+    <h3>6.4 GitHub Pages (Website &amp; Checkout Page Hosting)</h3>
+    <p>Our marketing website (focusdetox.github.io) and the static page that loads Paddle's checkout are hosted on GitHub Pages, operated by GitHub, Inc. GitHub may collect standard server logs (including your IP address) when you visit these pages. GitHub's privacy practices are described at <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">github.com</a>.</p>
+
+    <h3>6.5 Distribution Platforms</h3>
+    <p>The mobile application is distributed through the Google Play Store and the Apple App Store. When you download or update the app, those platforms collect data subject to their own privacy policies. We receive only aggregated, non-identifying install metrics from these platforms.</p>
+
+    <h3>6.6 Legal Requirements</h3>
     <p>We may disclose personal data if required to do so by law or in good faith that such action is necessary to: (a) comply with a legal obligation; (b) protect and defend our rights or property; (c) prevent fraud or illegal activity; (d) protect the safety of users or the public.</p>
   </div>
 
   <div class="doc-section" id="p7">
     <h2>7. International Data Transfers</h2>
-    <p>FocusDetox is operated from Israel. Israel has been granted an adequacy decision by the European Commission, meaning your data transferred from the EEA to Israel receives a level of protection equivalent to that provided within the EEA.</p>
-    <p>Where we use service providers located outside Israel or the EEA, we ensure appropriate safeguards are in place, such as the EU Standard Contractual Clauses (SCCs) or providers certified under equivalent frameworks.</p>
+    <p>FocusDetox is operated from Israel. Israel has been granted an adequacy decision by the European Commission, meaning that data transferred from the EEA to Israel receives a level of protection equivalent to that provided within the EEA.</p>
+    <p>Several of our service providers are located in the United States — including Convex (backend hosting), Paddle (payment processing), Google (authentication and Play Store distribution), and GitHub (website and checkout-page hosting). For transfers from the EEA, UK, or Switzerland to the United States, we rely on appropriate safeguards such as the EU Standard Contractual Clauses (SCCs), the EU–US Data Privacy Framework where applicable, or equivalent mechanisms that the relevant provider maintains.</p>
   </div>
 
   <div class="doc-section" id="p8">
@@ -160,7 +164,7 @@
     <p>We retain your personal data only for as long as necessary to fulfil the purposes described in this Policy, or as required by law:</p>
     <ul>
       <li><strong>Account data:</strong> Retained while your account is active and for up to 3 years after account closure, for legal and dispute resolution purposes;</li>
-      <li><strong>Pact and breach data:</strong> Retained for up to 2 years to enable dispute resolution for payment-related matters;</li>
+      <li><strong>Detox state and break data:</strong> Retained for up to 2 years to enable dispute resolution for payment-related matters;</li>
       <li><strong>Payment records:</strong> Retained for up to 7 years as required by applicable financial and tax regulations;</li>
       <li><strong>Support communications:</strong> Retained for up to 2 years after resolution;</li>
       <li><strong>Anonymized analytics:</strong> May be retained indefinitely as they do not constitute personal data.</li>
@@ -172,12 +176,12 @@
     <h2>9. Security</h2>
     <p>We implement industry-standard technical and organizational measures to protect your personal data, including:</p>
     <ul>
-      <li>Encryption of data in transit (TLS/HTTPS) and at rest;</li>
-      <li>Secure password hashing (bcrypt or equivalent);</li>
-      <li>Access controls limiting data access to authorized personnel only;</li>
-      <li>Regular security assessments of our infrastructure.</li>
+      <li>Encryption of data in transit (TLS/HTTPS) and at rest, as provided by our infrastructure provider Convex;</li>
+      <li>Authentication delegated to Google OAuth — we do not store user passwords;</li>
+      <li>Server-side authorization checks ensuring each user can only access their own records;</li>
+      <li>Limiting administrative access to the data store to authorized personnel.</li>
     </ul>
-    <p>Your payment data is handled exclusively by Paddle, which maintains PCI DSS Level 1 compliance — the highest level of payment security. We never store your full card number or CVV.</p>
+    <p>Your payment data is handled exclusively by Paddle, which maintains PCI DSS Level 1 compliance — the highest level of payment security. We never see, transmit, or store your card number or CVV.</p>
     <p>No method of transmission over the internet or electronic storage is 100% secure. If you discover a security vulnerability, please report it responsibly to <a href="mailto:businessinquiryrn@gmail.com">businessinquiryrn@gmail.com</a>.</p>
   </div>
 
@@ -209,8 +213,8 @@
 
   <div class="doc-section" id="p12">
     <h2>12. Cookies &amp; Tracking</h2>
-    <p>Our website (focusdetox.github.io) may use minimal, strictly necessary cookies for session management and security. We do not use advertising or third-party tracking cookies on our website.</p>
-    <p>The mobile application does not use browser cookies. It may use device identifiers for authentication and crash reporting purposes as described in Section 3.2.</p>
+    <p>Our website (focusdetox.github.io) does not set any first-party cookies. Standard server logs are kept by GitHub Pages as our website host. The Paddle-hosted checkout page may set cookies that are strictly necessary for the operation of the checkout, as described in Paddle's Privacy Policy.</p>
+    <p>The mobile application does not use browser cookies and does not embed third-party advertising or analytics SDKs. Authentication state is stored locally on the device (in secure on-device storage) so you remain signed in between sessions.</p>
   </div>
 
   <div class="doc-section" id="p13">
