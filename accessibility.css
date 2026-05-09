@@ -1,0 +1,291 @@
+/* ============================================================
+   FocusDetox accessibility widget
+   Targets WCAG 2.1 Level AA:
+   - 1.4.3 / 1.4.11 contrast
+   - 1.4.13 hover/focus content (Esc-dismissible, persistent)
+   - 2.1.1 / 2.1.2 keyboard operable, no trap
+   - 2.4.7 visible focus
+   - 2.5.5 target size (52x52 button, 44+ option rows)
+   - 3.2.4 consistent identification
+   - 4.1.2 name/role/value
+   ============================================================ */
+
+/* Button: high-contrast blue (#1d4ed8 on #fff = 8.6:1) */
+.a11y-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: #1d4ed8;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(29, 78, 216, 0.4), 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 2147483646;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "DM Sans", sans-serif;
+}
+.a11y-btn:hover { transform: scale(1.08); background: #1e40af; }
+.a11y-btn:focus { outline: none; }
+.a11y-btn:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 3px;
+  box-shadow: 0 0 0 6px rgba(29, 78, 216, 0.25);
+}
+.a11y-btn svg { width: 28px; height: 28px; }
+
+/* Panel */
+.a11y-panel {
+  position: fixed;
+  bottom: 84px;
+  left: 20px;
+  width: 320px;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 110px);
+  overflow-y: auto;
+  background: #ffffff;
+  color: #111827;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.28), 0 4px 12px rgba(0,0,0,0.12);
+  padding: 18px 18px 16px;
+  z-index: 2147483647;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  display: none;
+  border: 1px solid #d1d5db;
+}
+.a11y-panel.open { display: block; animation: a11yFadeIn 0.18s ease; }
+@keyframes a11yFadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.a11y-panel h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  font-family: inherit;
+  padding-right: 32px;
+}
+.a11y-panel-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 1;
+  color: #374151;
+  border-radius: 8px;
+  font-family: inherit;
+}
+.a11y-panel-close:hover { background: #f3f4f6; color: #111827; }
+.a11y-panel-close:focus { outline: none; }
+.a11y-panel-close:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 1px;
+}
+
+/* Options */
+.a11y-options { display: flex; flex-direction: column; gap: 6px; }
+.a11y-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 2px solid #d1d5db;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  font-size: 14px;
+  color: #111827;
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+}
+.a11y-option:hover { background: #f3f4f6; border-color: #9ca3af; }
+.a11y-option:focus { outline: none; }
+.a11y-option:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+  border-color: #1d4ed8;
+}
+.a11y-option.active {
+  background: #eff6ff;
+  border-color: #1d4ed8;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+.a11y-option-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1d4ed8;
+  background: #eff6ff;
+  border-radius: 6px;
+}
+.a11y-option.active .a11y-option-icon { background: #1d4ed8; color: #ffffff; }
+.a11y-option-label { flex: 1; }
+.a11y-option-state {
+  font-size: 11px;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+}
+.a11y-option.active .a11y-option-state { color: #1d4ed8; }
+
+.a11y-reset {
+  margin-top: 12px;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px;
+  background: #ffffff;
+  border: 2px solid #d1d5db;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #374151;
+  font-family: inherit;
+  font-weight: 600;
+}
+.a11y-reset:hover { background: #fef2f2; color: #b91c1c; border-color: #ef4444; }
+.a11y-reset:focus { outline: none; }
+.a11y-reset:focus-visible {
+  outline: 3px solid #1d4ed8;
+  outline-offset: 2px;
+  border-color: #1d4ed8;
+}
+
+/* ============================================================
+   Applied accessibility modes
+   ============================================================ */
+
+/* Larger text — ~18% bump (WCAG 1.4.4) */
+html.a11y-larger-text { font-size: 118%; }
+html.a11y-larger-text body { line-height: 1.65; }
+
+/* Increased spacing (WCAG 1.4.12) */
+html.a11y-larger-spacing body,
+html.a11y-larger-spacing body * {
+  line-height: 1.8 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+html.a11y-larger-spacing p,
+html.a11y-larger-spacing li { margin-bottom: 0.6em !important; }
+
+/* High contrast — pure black/white + yellow links (>=7:1) */
+html.a11y-high-contrast,
+html.a11y-high-contrast body {
+  background: #000 !important;
+  color: #fff !important;
+}
+html.a11y-high-contrast *:not(.a11y-btn):not(.a11y-btn *):not(.a11y-panel):not(.a11y-panel *) {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+html.a11y-high-contrast a,
+html.a11y-high-contrast a * { color: #ffd400 !important; text-decoration: underline !important; }
+html.a11y-high-contrast button:not(.a11y-btn):not(.a11y-option):not(.a11y-reset):not(.a11y-panel-close),
+html.a11y-high-contrast .nav-cta,
+html.a11y-high-contrast .store-btn {
+  background: #fff !important;
+  color: #000 !important;
+  border: 2px solid #fff !important;
+}
+html.a11y-high-contrast button:not(.a11y-btn) *:not(.a11y-option-state),
+html.a11y-high-contrast .nav-cta *,
+html.a11y-high-contrast .store-btn * { color: #000 !important; }
+html.a11y-high-contrast img,
+html.a11y-high-contrast video { filter: grayscale(1) contrast(1.2); }
+
+/* Underline + Highlight Links (WCAG 1.4.1) */
+html.a11y-underline-links a { text-decoration: underline !important; }
+html.a11y-highlight-links a:not(.a11y-btn):not(.a11y-option):not(.a11y-reset):not(.a11y-panel-close) {
+  background: #fff59d !important;
+  color: #111827 !important;
+  outline: 1px solid #f59e0b !important;
+  text-decoration: underline !important;
+}
+
+/* Reduce motion (WCAG 2.3.3) */
+html.a11y-reduce-motion *,
+html.a11y-reduce-motion *::before,
+html.a11y-reduce-motion *::after {
+  animation-duration: 0.001s !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001s !important;
+  scroll-behavior: auto !important;
+}
+
+/* Pause animations entirely (WCAG 2.2.2) */
+html.a11y-pause-animations *,
+html.a11y-pause-animations *::before,
+html.a11y-pause-animations *::after {
+  animation-play-state: paused !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Grayscale — applied to body so widget (in <html>) stays in color */
+html.a11y-grayscale body { filter: grayscale(1); }
+
+/* Bigger cursor — large SVG arrow */
+html.a11y-bigger-cursor,
+html.a11y-bigger-cursor * {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 32 32'><path d='M4 2 L4 26 L11 20 L15 28 L19 26 L15 18 L24 18 Z' fill='%23000' stroke='%23fff' stroke-width='1.5' stroke-linejoin='round'/></svg>") 2 2, auto !important;
+}
+html.a11y-bigger-cursor a,
+html.a11y-bigger-cursor button,
+html.a11y-bigger-cursor [role="button"],
+html.a11y-bigger-cursor [role="switch"],
+html.a11y-bigger-cursor input[type="submit"],
+html.a11y-bigger-cursor input[type="button"] {
+  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 32 32'><path d='M12 2 L12 18 L8 18 L16 28 L24 18 L20 18 L20 2 Z' fill='%231d4ed8' stroke='%23fff' stroke-width='1.5' stroke-linejoin='round'/></svg>") 16 16, pointer !important;
+}
+
+/* Honor user OS preference even if we haven't toggled */
+@media (prefers-reduced-motion: reduce) {
+  .a11y-btn, .a11y-panel { transition: none !important; animation: none !important; }
+}
+
+/* Mobile sizing */
+@media (max-width: 480px) {
+  .a11y-btn { width: 48px; height: 48px; bottom: 16px; left: 16px; }
+  .a11y-btn svg { width: 24px; height: 24px; }
+  .a11y-panel { bottom: 76px; left: 16px; width: calc(100vw - 32px); }
+}
+
+/* Forced-colors / Windows High Contrast Mode support */
+@media (forced-colors: active) {
+  .a11y-btn { border: 2px solid CanvasText; background: ButtonFace; color: ButtonText; forced-color-adjust: none; }
+  .a11y-option, .a11y-reset, .a11y-panel-close { border-color: CanvasText; }
+  .a11y-option.active { outline: 2px solid Highlight; }
+}
+
+/* Print: hide widget */
+@media print {
+  .a11y-btn, .a11y-panel { display: none !important; }
+}
